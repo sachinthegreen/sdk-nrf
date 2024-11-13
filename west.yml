@@ -23,6 +23,8 @@ manifest:
     # Third-party repository sources:
     - name: zephyrproject
       url-base: https://github.com/zephyrproject-rtos
+    - name: sachin
+      url-base: https://github.com/sachinthegreen
     - name: throwtheswitch
       url-base: https://github.com/ThrowTheSwitch
     - name: armmbed
@@ -68,8 +70,9 @@ manifest:
     # https://developer.nordicsemi.com/nRF_Connect_SDK/doc/latest/zephyr/introduction/index.html
     # https://developer.nordicsemi.com/nRF_Connect_SDK/doc/latest/zephyr/guides/modules.html
     - name: zephyr
+      remote: sachin
       repo-path: sdk-zephyr
-      revision: dab9c11bdcc80f1e0670ef686e6066ee3304ac47
+      revision: nrf700x-mem-test
       import:
         # In addition to the zephyr repository itself, NCS also
         # imports the contents of zephyr/west.yml at the above

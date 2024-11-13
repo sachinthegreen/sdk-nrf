@@ -134,6 +134,7 @@ static int build_wifi_beacon(unsigned short beacon_interval,
 
 int main(void)
 {
+#ifdef notyet	
 	struct nrf_wifi_off_raw_tx_conf conf;
 	struct nrf_wifi_off_raw_tx_stats stats;
 	int len = -1;
@@ -251,6 +252,6 @@ int main(void)
 	if (mac_addr) {
 		free(mac_addr);
 	}
-
+#endif
 	return 0;
 }
