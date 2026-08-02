@@ -16,6 +16,7 @@
 #include <zephyr/device.h>
 
 #include <util.h>
+#include <common/rf_params.h>
 #include <radio_test/main.h>
 #include <vtf_monitoring/vtf_monitoring.h>
 
@@ -34,7 +35,6 @@ static enum nrf_wifi_status nrf_wifi_rt_drv_dev_add(struct nrf_wifi_rt_drv_priv 
 	unsigned char op_band = nrf_wifi_utils_get_op_band();
 	struct nrf_wifi_tx_pwr_ctrl_params tx_pwr_ctrl_params;
 	struct nrf_wifi_tx_pwr_ceil_params tx_pwr_ceil_params;
-	struct nrf_wifi_board_params board_params;
 	unsigned int fw_ver = 0;
 
 	drv_ctx = &drv_priv->drv_ctx;
@@ -81,6 +81,11 @@ static enum nrf_wifi_status nrf_wifi_rt_drv_dev_add(struct nrf_wifi_rt_drv_priv 
 	drv_ctx->vtf_buffer_start_address =
 		(unsigned int)&vtf_snapshots[VTF_CH_BATTERY_VOLTAGE];
 
+	memset(&tx_pwr_ctrl_params, 0, sizeof(tx_pwr_ctrl_params));
+	memset(&tx_pwr_ceil_params, 0, sizeof(tx_pwr_ceil_params));
+
+	configure_tx_pwr_settings(&tx_pwr_ctrl_params, &tx_pwr_ceil_params);
+
 	status = nrf_wifi_rt_fmac_dev_init(rpu_ctx,
 #ifdef CONFIG_NRF_WIFI_LOW_POWER
 					   SLEEP_DISABLE,
@@ -90,7 +95,6 @@ static enum nrf_wifi_status nrf_wifi_rt_drv_dev_add(struct nrf_wifi_rt_drv_priv 
 					   IS_ENABLED(CONFIG_NRF_WIFI_BEAMFORMING),
 					   &tx_pwr_ctrl_params,
 					   &tx_pwr_ceil_params,
-					   &board_params,
 					   STRINGIFY(CONFIG_NRF71_REG_DOMAIN),
 					   drv_ctx->phy_rf_params_addr,
 					   drv_ctx->vtf_buffer_start_address);
