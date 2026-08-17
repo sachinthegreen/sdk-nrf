@@ -28,9 +28,8 @@
 #endif /* CONFIG_NET_CONNECTION_MANAGER_CONNECTIVITY_WIFI_MGMT */
 
 #include <common/status.h>
-#include <util.h>
-#include <common/fmac_util.h>
 #include <common/rf_params.h>
+#include <common/util.h>
 #include <system/core.h>
 #include <vtf_monitoring/vtf_monitoring.h>
 #include <drivers/wifi/nrf71/nrf71_wifi_coex.h>

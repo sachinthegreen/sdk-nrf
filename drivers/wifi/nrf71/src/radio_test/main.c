@@ -15,8 +15,8 @@
 #include <zephyr/logging/log.h>
 #include <zephyr/device.h>
 
-#include <util.h>
 #include <common/rf_params.h>
+#include <common/util.h>
 #include <radio_test/core.h>
 #include <vtf_monitoring/vtf_monitoring.h>
 
