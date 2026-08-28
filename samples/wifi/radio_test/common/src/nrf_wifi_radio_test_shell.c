@@ -9,7 +9,7 @@
  */
 
 #ifdef CONFIG_NRF71_RADIO_TEST
-#include <radio_test/main.h>
+#include <radio_test/core.h>
 #include <vtf_monitoring/vtf_monitoring.h>
 #else
 #include <fmac_main.h>
